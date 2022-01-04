@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4922219302522461748}
   - component: {fileID: 7495360875389900187}
   - component: {fileID: 7267658917997950572}
+  - component: {fileID: 2962566846761838740}
   m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
@@ -93,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2063bada375c3b4f8e1c972705bfcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
+  isOverlap: 0
 --- !u!61 &7267658917997950572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,3 +122,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3828125, y: 0.3515625}
   m_EdgeRadius: 0
+--- !u!50 &2962566846761838740
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729284167579073641}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 4bf7efcd30dfd38489fac72a6a2834d2, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
