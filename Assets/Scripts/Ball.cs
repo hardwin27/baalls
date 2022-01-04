@@ -14,14 +14,32 @@ public class Ball : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    /*private void Start()
     {
-        _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        _body.AddForce(_moveDirection * _moveSpeed, ForceMode2D.Impulse);
-    }
+        *//*_moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        _body.AddForce(_moveDirection * _moveSpeed, ForceMode2D.Impulse);*//*
+    }*/
 
     private void Update()
     {
-        /*print(_body.velocity.magnitude);*/
+        GetBallDirection();
+        print(_body.velocity.magnitude);
+    }
+
+    private void FixedUpdate()
+    {
+        MoveBall();
+    }
+
+    private void GetBallDirection()
+    {
+        float horDir = Input.GetAxisRaw("Horizontal");
+        float verDir = Input.GetAxisRaw("Vertical");
+        _moveDirection = new Vector2(horDir, verDir);
+    }
+
+    private void MoveBall()
+    {
+        _body.velocity = _moveDirection.normalized * _moveSpeed;
     }
 }
