@@ -7,6 +7,7 @@ public class SquareSpawner : MonoBehaviour
     [SerializeField] private ObjectPool _pool;
     [SerializeField] private GameObject _squarePrefab;
     private int _poolSize;
+    private bool _alreadyStarted = false;
 
     /*private IObjectPool _objectPooler;*/
 
@@ -18,6 +19,15 @@ public class SquareSpawner : MonoBehaviour
         while(!_pool.IsPoolEmpty())
         {
             _pool.Spawn();
+        }
+    }
+
+    private void Update()
+    {
+        if(!_alreadyStarted)
+        {
+            GameManager.Instance.SetBallActive(true);
+            _alreadyStarted = true;
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public bool isActive = false;
+    
     private float _moveSpeed = 5f;
     /*private Vector2 _moveDirection;*/
     private Vector3? _targetPosition = null;
@@ -14,6 +16,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        isActive = false;
         _body = GetComponent<Rigidbody2D>();
     }
 
@@ -33,6 +36,20 @@ public class Ball : MonoBehaviour
     private void FixedUpdate()
     {
         MoveBall();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(!isActive)
+        {
+            return;
+        }
+
+        if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Square"))
+        {
+            collision.gameObject.GetComponent<Square>().Despawn();
+            ScoreManager.Instance.AddScore(1);
+        }
     }
 
     private void GetBallDirection()

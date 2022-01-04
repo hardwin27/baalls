@@ -19,6 +19,13 @@ public class ObjectPool : MonoBehaviour
             GameObject gameObject = Instantiate(prefab);
             gameObject.transform.SetParent(parent);
 
+            Square tempSquare = gameObject.GetComponent<Square>();
+
+            tempSquare.Despawn = () =>
+            {
+                Despawn(gameObject);
+            };
+
             _gameObjects.Enqueue(gameObject);
         }
     }
@@ -37,10 +44,6 @@ public class ObjectPool : MonoBehaviour
         }
 
         gameObject.transform.position = _parent.position;
-      /*  float range = 1f;
-
-        Vector3 offset = new Vector3(Random.Range(-range, range + 1f), Random.Range(-range, range + 1f), 0f);
-        gameObject.transform.position += offset;*/
 
         return gameObject;
     }
