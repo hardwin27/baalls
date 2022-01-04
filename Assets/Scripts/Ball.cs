@@ -47,8 +47,12 @@ public class Ball : MonoBehaviour
 
         if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Square"))
         {
-            collision.gameObject.GetComponent<Square>().Despawn();
-            ScoreManager.Instance.AddScore(1);
+            Square collidedSquare = collision.gameObject.GetComponent<Square>();
+            if (collidedSquare.isActive)
+            {
+                collision.gameObject.GetComponent<Square>().Despawn();
+                ScoreManager.Instance.AddScore(1);
+            }
         }
     }
 

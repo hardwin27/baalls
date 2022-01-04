@@ -52,6 +52,16 @@ public class ObjectPool : MonoBehaviour
     {
         gameObject.SetActive(false);
         _gameObjects.Enqueue(gameObject);
+
+        StartCoroutine(Respawn(gameObject));
+    }
+
+    public IEnumerator Respawn(GameObject respawnedObject)
+    {
+        yield return new WaitForSeconds(3f);
+        respawnedObject.SetActive(true);
+        respawnedObject.GetComponent<Square>().Relocate();
+        _gameObjects.Enqueue(respawnedObject);
     }
 
     public bool IsPoolEmpty()

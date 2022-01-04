@@ -10,11 +10,6 @@ public class Square : MonoBehaviour
     
     public Action Despawn;
 
-    private void OnEnable()
-    {
-        
-    }
-
     private void Start()
     {
         transform.localScale = new Vector3(UnityEngine.Random.Range(0.5f, 1f), UnityEngine.Random.Range(0.5f, 1f), 1f);
@@ -29,13 +24,16 @@ public class Square : MonoBehaviour
         }
     }
 
-    private void Relocate()
+    public void Relocate()
     {
+        isActive = false;
         isOverlap = false;
         transform.position = new Vector3(UnityEngine.Random.Range(-8f, 8f), UnityEngine.Random.Range(-4f, 4f), transform.position.z);
         if(isOverlap)
         {
             Relocate();
         }
+
+        isActive = true;
     }
 }
